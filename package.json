@@ -1,0 +1,41 @@
+{
+  "name": "appsnow-component",
+  "version": "1.0.0",
+  "description": "Interface for AppsNow framework",
+  "author": {
+    "name": "ANFramework",
+    "email": "ANFramework@gmail.com"
+  },
+  "directories": {
+    "doc": "doc"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/ANInterface.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anframework/appsnow-component.git"
+  },
+  "license": "ISC",
+  "scripts": {
+    "dev": "webpack --config ./webpack.config.js --mode=development",
+    "prod": "webpack --config ./webpack.config.js --mode=production"
+  },
+  "dependencies": {
+    "@material/button": "^0.42.0",
+    "css-loader": "^2.0.0",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
+  },
+  "devDependencies": {
+    "reflect-metadata": "^0.1.12",
+    "ts-loader": "4.4.2",
+    "typescript": "2.9.2",
+    "typescript-declaration-webpack-plugin": "^0.1.1",
+    "webpack": "4.15.0",
+    "webpack-cli": "3.0.8",
+    "webpack-dev-server": "3.1.4"
+  }
+}
