@@ -1,4 +1,4 @@
-import 'reflect-metadata';
+import 'reflect-metadata'
 
 export function ANProp(name: string) {
     return function (target, propertyKey: string) {

@@ -2,8 +2,8 @@ var path = require('path');
 const TypescriptDeclarationPlugin = require('typescript-declaration-webpack-plugin');
 
 module.exports = {
-  //mode: 'production',
-  entry: './src/Example/Button.ts',
+  mode: 'production',
+  entry: './src/Example/Row.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'ANInterface.js'
