@@ -1,5 +1,5 @@
 import { ANStaticPanel } from "../Component/ANStaticPanel"
-import { ANDynamicCell } from "../Component/ANDynamicCell"
+import { ANStaticCell } from "../Component/ANStaticCell"
 import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
@@ -38,13 +38,11 @@ export class SimpleCard extends ANStaticPanel {
         rootElement.appendChild(div3);
 
         var leftTopElement = document.createElement('div');
-        leftTopElement.style.display = 'inline-block';
         leftTopElement.style.width = '50%';
         leftTopElement.style.height = '100%';
         div1.appendChild(leftTopElement);
         
         var rightTopElement = document.createElement('div');
-        rightTopElement.style.display = 'inline-block';
         rightTopElement.style.width = 'calc(50% - 1px)';
         rightTopElement.style.height = '100%';
         rightTopElement.style.borderLeft = '1px solid #212121';
@@ -56,9 +54,9 @@ export class SimpleCard extends ANStaticPanel {
         div3.appendChild(bottomTopElement);
 
         return { RootElement: rootElement, ContainerList: [
-            { ContainerElement: leftTopElement, CellConstructor: ANDynamicCell },
-            { ContainerElement: rightTopElement, CellConstructor: ANDynamicCell },
-            { ContainerElement: bottomTopElement, CellConstructor: ANDynamicCell } ] };
+            { ContainerElement: leftTopElement, CellConstructor: ANStaticCell },
+            { ContainerElement: rightTopElement, CellConstructor: ANStaticCell },
+            { ContainerElement: bottomTopElement, CellConstructor: ANStaticCell } ] };
     }
 
     Render(properties: Array<string>): void {
