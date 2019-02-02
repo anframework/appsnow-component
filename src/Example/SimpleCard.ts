@@ -1,8 +1,9 @@
 import { ANStaticPanel } from "../Component/ANStaticPanel"
+import { ANDynamicCell } from "../Component/ANDynamicCell"
 import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
-export class SimpleCard2 extends ANStaticPanel {
+export class SimpleCard extends ANStaticPanel {
     
     @AN.ANProp('BackgroundColor')
     public color: string = 'white';
@@ -15,6 +16,7 @@ export class SimpleCard2 extends ANStaticPanel {
         rootElement.style.flexDirection = 'column';
 
         var div1 = document.createElement('div');
+        div1.style.display = 'flex';
         div1.style.width = '100%';
         div1.style.height = '60%';
         div1.style.border = '1px solid #212121';
@@ -54,9 +56,9 @@ export class SimpleCard2 extends ANStaticPanel {
         div3.appendChild(bottomTopElement);
 
         return { RootElement: rootElement, ContainerList: [
-            { ContainerElement: leftTopElement, CellConstructor: ANCell },
-            { ContainerElement: rightTopElement, CellConstructor: ANCell },
-            { ContainerElement: bottomTopElement, CellConstructor: ANCell } ] };
+            { ContainerElement: leftTopElement, CellConstructor: ANDynamicCell },
+            { ContainerElement: rightTopElement, CellConstructor: ANDynamicCell },
+            { ContainerElement: bottomTopElement, CellConstructor: ANDynamicCell } ] };
     }
 
     Render(properties: Array<string>): void {

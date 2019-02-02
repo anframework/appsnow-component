@@ -1,8 +1,9 @@
 import { ANDynamicPanel } from "../Component/ANDynamicPanel"
+import { ANDynamicCell } from "../Component/ANDynamicCell"
 import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
-class RowCell extends ANCell {
+class RowCell extends ANDynamicCell {
     @AN.ANProp('Width')
     public w: string = '100%';
 
