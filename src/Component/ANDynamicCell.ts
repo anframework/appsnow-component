@@ -15,6 +15,7 @@ export class ANDynamicCell extends ANCell {
 
     public Initialize(): HTMLElement {
         this.RootElement = document.createElement('div');
+        this.RootElement.style.position = 'relative';
         return this.RootElement;
     }
 
