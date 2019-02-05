@@ -4,14 +4,13 @@ import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
 export class SimpleCard extends ANStaticPanel {
-    
-    @AN.ANProp('BackgroundColor')
+    @AN.ANProp('BackgroundColor', 'Color', null)
     public color: string = 'white';
 
     InitializePanel(): { RootElement: HTMLElement; ContainerList: Array<{ ContainerElement: HTMLElement, CellConstructor: new () => ANCell }> } {
         var rootElement = document.createElement('div');
         rootElement.style.backgroundColor = this.color;
-        rootElement.style.position = 'relative';
+        //rootElement.style.position = 'relative';
         rootElement.style.width = 'calc(100% - 2px)';
         rootElement.style.flexDirection = 'column';
 

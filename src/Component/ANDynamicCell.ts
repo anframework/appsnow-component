@@ -2,13 +2,13 @@ import { ANCell } from "./ANCell"
 import * as AN from '../Attribute/Attribute'
 
 export class ANDynamicCell extends ANCell {
-    @AN.ANProp('Margin')
+    @AN.ANProp('Margin', 'string', null)
     public margin: string = '0px 0px 0px 0px';
 
-    @AN.ANProp('BorderWidth')
+    @AN.ANProp('BorderWidth', 'number', null)
     public borderWidth: number = 0;
 
-    @AN.ANProp('BorderColor')
+    @AN.ANProp('BorderColor', 'string', null)
     public borderColor: string = 'gray';
 
     public RootElement: HTMLElement;

@@ -4,10 +4,10 @@ import { MDCRipple } from '@material/ripple'
 import '@material/button/mdc-button.scss'
 
 export class Button extends ANControl {
-    @AN.ANProp('Caption')
+    @AN.ANProp('Caption', 'String', null)
     public caption: string = 'Button';
 
-    @AN.ANProp('BackgroundColor')
+    @AN.ANProp('BackgroundColor', 'Color', null)
     public color: string = 'gray';
 
     @AN.ANEvent('OnClick')

@@ -4,10 +4,10 @@ import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
 class RowCell extends ANDynamicCell {
-    @AN.ANProp('Width')
+    @AN.ANProp('Width', 'string', null)
     public w: string = '100%';
 
-    @AN.ANProp('Height')
+    @AN.ANProp('Height', 'string', null)
     public h: string = '300px';
 
     public Initialize(): HTMLElement {
@@ -25,7 +25,7 @@ class RowCell extends ANDynamicCell {
 }
 
 export class Row extends ANDynamicPanel {
-    @AN.ANProp('BackgroundColor')
+    @AN.ANProp('BackgroundColor', 'Color', null)
     public color: string = 'white';
 
     InitializePanel(): { RootElement: HTMLElement, ContainerElement: HTMLElement, CellConstructor: new () => ANCell } {
