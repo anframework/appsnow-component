@@ -4,36 +4,32 @@ import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
 export class SimpleCard extends ANStaticPanel {
-    @AN.ANProp('BackgroundColor', 'Color', null)
+    @AN.ANProp('BackgroundColor', 'ComboBox', [ "1", "2", "3" ])
     public color: string = 'white';
 
     InitializePanel(): { RootElement: HTMLElement; ContainerList: Array<{ ContainerElement: HTMLElement, CellConstructor: new () => ANCell }> } {
         var rootElement = document.createElement('div');
         rootElement.style.backgroundColor = this.color;
-        //rootElement.style.position = 'relative';
-        rootElement.style.width = 'calc(100% - 2px)';
+        rootElement.style.minWidth = '200px';
         rootElement.style.flexDirection = 'column';
 
         var div1 = document.createElement('div');
         div1.style.display = 'flex';
-        div1.style.width = '100%';
-        div1.style.height = '60%';
         div1.style.border = '1px solid #212121';
+        div1.style.minHeight = '120px';
         rootElement.appendChild(div1);
 
         var div2 = document.createElement('div');
-        div2.style.width = '100%';
-        div2.style.height = '5%';
         div2.style.border = '1px solid #212121';
         div2.style.backgroundColor = 'black';
         div2.style.borderTop = '';
+        div2.style.minHeight = '10px';
         rootElement.appendChild(div2);
 
         var div3 = document.createElement('div');
-        div3.style.width = '100%';
-        div3.style.height = 'calc(35% - 4px)';
         div3.style.border = '1px solid #212121';
         div3.style.borderTop = '';
+        div3.style.minHeight = '30px';
         rootElement.appendChild(div3);
 
         var leftTopElement = document.createElement('div');

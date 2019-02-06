@@ -4,23 +4,15 @@ import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
 class RowCell extends ANDynamicCell {
-    @AN.ANProp('Width', 'string', null)
-    public w: string = '100%';
-
-    @AN.ANProp('Height', 'string', null)
-    public h: string = '300px';
-
     public Initialize(): HTMLElement {
         super.Initialize();
-        this.RootElement.style.width = this.w;
-        this.RootElement.style.height = this.h;
+        this.RootElement.style.minWidth = '100%';
+        this.RootElement.style.minHeight = '20px';
         return this.RootElement;
     }
 
     public Render(properties: string[]): void {
         super.Render(properties);
-        if('Width' in properties) this.RootElement.style.width = this.w;
-        if('Height' in properties) this.RootElement.style.height = this.h;
     }
 }
 
@@ -30,6 +22,9 @@ export class Row extends ANDynamicPanel {
 
     InitializePanel(): { RootElement: HTMLElement, ContainerElement: HTMLElement, CellConstructor: new () => ANCell } {
         var rootElement = document.createElement('div');
+        rootElement.style.display = 'flex';
+        rootElement.style.flexDirection = 'column';
+        rootElement.style.minHeight = '20px';
         rootElement.style.backgroundColor = this.color;
         return { RootElement: rootElement, ContainerElement: rootElement, CellConstructor: RowCell };
     }
