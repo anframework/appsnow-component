@@ -5,12 +5,12 @@ export class ANDynamicCell extends ANCell {
     @AN.ANProp('Margin', 'number', null)
     public margin: string = '0 0 0 0';
 
-    @AN.ANProp('Padding', 'string', null)
-    public padding: string = '0 0 0 0';
-    
     @AN.ANProp('Border', 'string', null)
     public border: string = 'gray';
 
+    @AN.ANProp('Padding', 'string', null)
+    public padding: string = '0 0 0 0';
+    
     @AN.ANProp('Width', 'string', null)
     public w: string = null;
 
@@ -22,6 +22,12 @@ export class ANDynamicCell extends ANCell {
 
     @AN.ANProp('Minimum Height', 'String', null)
     public minHeight: string = null;
+
+    @AN.ANProp('Maximum Width', 'String', null)
+    public maxWidth: string = null;
+
+    @AN.ANProp('Maximum Height', 'String', null)
+    public maxHeight: string = null;
 
     public RootElement: HTMLElement;
 
@@ -35,22 +41,42 @@ export class ANDynamicCell extends ANCell {
         this.RootElement.style.height = this.h;
         this.RootElement.style.minWidth = this.minWidth;
         this.RootElement.style.minHeight = this.minHeight;
+        this.RootElement.style.maxWidth = this.maxWidth;
+        this.RootElement.style.maxHeight = this.maxHeight;
         return this.RootElement;
     }
 
     public Render(properties: string[]): void {
-        if("Margin" in properties) this.RootElement.style.margin = this.margin;
-        if("Border" in properties) this.RootElement.style.border = this.border;
-        if("Padding" in properties) this.RootElement.style.padding = this.padding;
-        if('Width' in properties) this.RootElement.style.width = this.w;
-        if('Height' in properties) this.RootElement.style.height = this.h;
-    }
-
-    public GetRootElement() {
-        return this.RootElement;
-    }
-
-    public SetDragEnterAction(action: (cell: ANCell) => void) {
-        this.RootElement.ondragenter = (ev) => { ev.cancelBubble = true; action(this); };
+        for(var i = 0, len = properties.length; i < len; i++) {
+            switch(properties[i]) {
+                case 'Margin':
+                    this.RootElement.style.margin = this.margin;
+                    break;
+                case 'Border':
+                    this.RootElement.style.border = this.border;
+                    break;
+                case 'Padding':
+                    this.RootElement.style.padding = this.padding;
+                    break;
+                case 'Width':
+                    this.RootElement.style.width = this.w;
+                    break;
+                case 'Height':
+                    this.RootElement.style.height = this.h;
+                    break;
+                case 'Minimum Width':
+                    this.RootElement.style.minWidth = this.minWidth;
+                    break;
+                case 'Minimum Height':
+                    this.RootElement.style.minHeight = this.minHeight;
+                    break;
+                case 'Maximum Width':
+                    this.RootElement.style.maxWidth = this.maxWidth;
+                    break;
+                case 'Maximum Height':
+                    this.RootElement.style.maxHeight = this.maxHeight;
+                    break;
+            }
+        }
     }
 }

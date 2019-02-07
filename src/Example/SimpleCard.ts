@@ -55,7 +55,12 @@ export class SimpleCard extends ANStaticPanel {
     }
 
     Render(properties: Array<string>): void {
-        if('BackgroundColor' in properties)
-            this.RootElement.style.borderColor = this.color;
+        for(var i = 0, len = properties.length; i < len; i++) {
+            switch(properties[i]) {
+                case 'BackgroundColor':
+                    this.RootElement.style.borderColor = this.color;
+                    break;
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@ export class Button extends ANControl {
         this.rootElement = document.createElement('button');
         this.rootElement.className = 'mdc-button';
         this.rootElement.onclick = (ev) => { this.OnClick(ev); };
+        this.rootElement.style.minHeight = '35px';
         new MDCRipple(this.rootElement);
         return this.rootElement;
     }

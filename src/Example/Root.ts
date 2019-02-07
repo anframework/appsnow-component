@@ -17,8 +17,14 @@ class RootCell extends ANDynamicCell {
 }
 
 export class Root extends ANDynamicPanel {
-    @AN.ANProp('BackgroundColor', 'Color', null)
+    @AN.ANProp('BackgroundColor', 'string', null)
     public color: string = 'white';
+
+    @AN.ANProp('VerticalAlign', 'string', ['flex-start', 'center', 'flex-end', 'stretch', 'baseline'])
+    public verticalAlign: string = 'flex-start';
+
+    @AN.ANProp('HorizontalAlign', 'string', ['flex-start', 'center', 'flex-end', 'space-between', 'space-around'])
+    public horizontalAlign: string = 'left';
 
     InitializePanel(): { RootElement: HTMLElement, ContainerElement: HTMLElement, CellConstructor: new () => ANCell } {
         var rootElement = document.createElement('div');
@@ -27,11 +33,24 @@ export class Root extends ANDynamicPanel {
         rootElement.style.width = '100%';
         rootElement.style.height = '100%';
         rootElement.style.backgroundColor = this.color;
-        return { RootElement: rootElement, ContainerElement: rootElement, CellConstructor: ANDynamicCell };
+        rootElement.style.webkitAlignContent = this.verticalAlign;
+        rootElement.style.webkitJustifyContent = this.horizontalAlign;
+        return { RootElement: rootElement, ContainerElement: rootElement, CellConstructor: RootCell };
     }
 
     Render(properties: Array<string>): void {
-        if('BackgroundColor' in properties)
-            this.RootElement.style.borderColor = this.color;
+        for(var i = 0, len = properties.length; i < len; i++) {
+            switch(properties[i]) {
+                case 'BackgroundColor':
+                    this.RootElement.style.borderColor = this.verticalAlign;
+                    break;
+                case 'VerticalAlign':
+                    this.RootElement.style.webkitAlignItems = this.verticalAlign;
+                    break;
+                case 'HorizontalAlign':
+                    this.RootElement.style.webkitJustifyContent = this.horizontalAlign;
+                    break;
+            }
+        }
     }
 }

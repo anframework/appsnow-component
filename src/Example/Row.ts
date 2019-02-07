@@ -3,22 +3,15 @@ import { ANDynamicCell } from "../Component/ANDynamicCell"
 import { ANCell } from "../Component/ANCell"
 import * as AN from '../Attribute/Attribute'
 
-class RowCell extends ANDynamicCell {
-    public Initialize(): HTMLElement {
-        super.Initialize();
-        this.RootElement.style.minWidth = '100%';
-        this.RootElement.style.minHeight = '20px';
-        return this.RootElement;
-    }
-
-    public Render(properties: string[]): void {
-        super.Render(properties);
-    }
-}
-
 export class Row extends ANDynamicPanel {
-    @AN.ANProp('BackgroundColor', 'Color', null)
+    @AN.ANProp('BackgroundColor', 'string', null)
     public color: string = 'white';
+
+    @AN.ANProp('VerticalAlign', 'string', ['flex-start', 'center', 'flex-end', 'stretch', 'baseline'])
+    public verticalAlign: string = 'center';
+
+    @AN.ANProp('HorizontalAlign', 'string', ['flex-start', 'center', 'flex-end', 'space-between', 'space-around'])
+    public horizontalAlign: string = 'center';
 
     InitializePanel(): { RootElement: HTMLElement, ContainerElement: HTMLElement, CellConstructor: new () => ANCell } {
         var rootElement = document.createElement('div');
@@ -26,11 +19,22 @@ export class Row extends ANDynamicPanel {
         rootElement.style.flexDirection = 'column';
         rootElement.style.minHeight = '20px';
         rootElement.style.backgroundColor = this.color;
-        return { RootElement: rootElement, ContainerElement: rootElement, CellConstructor: RowCell };
+        return { RootElement: rootElement, ContainerElement: rootElement, CellConstructor: ANDynamicCell };
     }
 
     Render(properties: Array<string>): void {
-        if('BackgroundColor' in properties)
-            this.RootElement.style.borderColor = this.color;
+        for(var i = 0, len = properties.length; i < len; i++) {
+            switch(properties[i]) {
+                case 'BackgroundColor':
+                    this.RootElement.style.borderColor = this.verticalAlign;
+                    break;
+                case 'VerticalAlign':
+                    this.RootElement.style.webkitAlignItems = this.verticalAlign;
+                    break;
+                case 'HorizontalAlign':
+                    this.RootElement.style.webkitJustifyContent = this.horizontalAlign;
+                    break;
+            }
+        }
     }
 }
