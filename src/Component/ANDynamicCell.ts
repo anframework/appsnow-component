@@ -2,19 +2,19 @@ import { ANCell } from "./ANCell"
 import * as AN from '../Attribute/Attribute'
 
 export class ANDynamicCell extends ANCell {
-    @AN.ANProp('Margin', 'number', null)
+    @AN.ANProp('Margin', 'Number', null)
     public margin: string = '0 0 0 0';
 
-    @AN.ANProp('Border', 'string', null)
+    @AN.ANProp('Border', 'String', null)
     public border: string = 'gray';
 
-    @AN.ANProp('Padding', 'string', null)
+    @AN.ANProp('Padding', 'String', null)
     public padding: string = '0 0 0 0';
     
-    @AN.ANProp('Width', 'string', null)
+    @AN.ANProp('Width', 'String', null)
     public w: string = null;
 
-    @AN.ANProp('Height', 'string', null)
+    @AN.ANProp('Height', 'String', null)
     public h: string = null;
 
     @AN.ANProp('Minimum Width', 'String', null)

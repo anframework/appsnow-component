@@ -42,7 +42,7 @@ export class Root extends ANDynamicPanel {
         for(var i = 0, len = properties.length; i < len; i++) {
             switch(properties[i]) {
                 case 'BackgroundColor':
-                    this.RootElement.style.borderColor = this.verticalAlign;
+                    this.RootElement.style.backgroundColor = this.color;
                     break;
                 case 'VerticalAlign':
                     this.RootElement.style.webkitAlignItems = this.verticalAlign;

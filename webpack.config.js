@@ -3,7 +3,7 @@ const TypescriptDeclarationPlugin = require('typescript-declaration-webpack-plug
 
 module.exports = {
   mode: 'production',
-  entry: './src/Example/Root.ts',
+  entry: './src/Example/Column.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'ANInterface.js'

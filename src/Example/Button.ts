@@ -13,9 +13,6 @@ export class Button extends ANControl {
     @AN.ANEvent('OnClick')
     public OnClick: (body: object) => void;
 
-    @AN.ANEvent('OnRed')
-    public OnRed: (body: object) => void;
-
     private rootElement: HTMLElement;
 
     public InitializeControl(): HTMLElement {
@@ -35,8 +32,6 @@ export class Button extends ANControl {
                     break;
                 case 'BackgroundColor':
                     this.rootElement.style.backgroundColor = this.color;
-                    if(this.color == 'red')
-                        this.OnRed(null);
                     break;
             }
         }
